@@ -52,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
                     restaurants.add(new Restaurant(
                         restaurant.get("name").toString(),
                         restaurant.get("latitude").toString(),
-                        restaurant.get("longitude").toString()
+                        restaurant.get("longitude").toString(),
+                        restaurant.get("image").toString()
                     ));
                 }
 

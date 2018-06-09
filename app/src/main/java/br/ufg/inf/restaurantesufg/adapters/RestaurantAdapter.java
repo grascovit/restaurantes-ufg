@@ -8,7 +8,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -37,7 +40,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         final String name = restaurants.get(i).name;
         final String latitude = restaurants.get(i).latitude;
         final String longitude = restaurants.get(i).longitude;
+        final String imageUrl = restaurants.get(i).image;
 
+        Picasso.get().load(imageUrl).into(viewHolder.imageViewRestaurant);
         viewHolder.textViewRestaurantName.setText(name);
         viewHolder.textViewRestaurantLatitude.setText(latitude);
         viewHolder.textViewRestaurantLongitude.setText(longitude);
@@ -63,6 +68,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
         private TextView textViewRestaurantName;
         private TextView textViewRestaurantLatitude;
         private TextView textViewRestaurantLongitude;
+        private ImageView imageViewRestaurant;
 
         public ViewHolder(View view) {
             super(view);
@@ -70,6 +76,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.Vi
             textViewRestaurantName = view.findViewById(R.id.text_view_restaurant_name);
             textViewRestaurantLatitude = view.findViewById(R.id.text_view_restaurant_latitude);
             textViewRestaurantLongitude = view.findViewById(R.id.text_view_restaurant_longitude);
+            imageViewRestaurant = view.findViewById(R.id.image_view_restaurant);
         }
     }
 }

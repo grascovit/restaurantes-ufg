@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
                     ));
                 }
 
-                adapter = new RestaurantAdapter(restaurants);
+                adapter = new RestaurantAdapter(restaurants, MainActivity.this);
                 recyclerView.setAdapter(adapter);
             }
 

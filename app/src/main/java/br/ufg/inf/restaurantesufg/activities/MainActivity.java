@@ -10,7 +10,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -23,6 +22,7 @@ import br.ufg.inf.restaurantesufg.models.Restaurant;
 public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
+    private static final String RESTAURANTS_COLLECTION = "restaurants";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +40,21 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadRestaurants() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference reference = database.getReference("restaurants");
+        DatabaseReference reference = database.getReference(RESTAURANTS_COLLECTION);
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
                 ArrayList<Restaurant> restaurants = new ArrayList<>();
 
-                for (DataSnapshot restaurantsSnapshot: snapshot.getChildren()) {
+                for (DataSnapshot restaurantsSnapshot : snapshot.getChildren()) {
                     HashMap restaurant = (HashMap) restaurantsSnapshot.getValue();
                     restaurants.add(new Restaurant(
-                        restaurant.get("name").toString(),
-                        restaurant.get("latitude").toString(),
-                        restaurant.get("longitude").toString(),
-                        restaurant.get("image").toString()
+                            restaurant.get("name").toString(),
+                            restaurant.get("latitude").toString(),
+                            restaurant.get("longitude").toString(),
+                            restaurant.get("image").toString(),
+                            restaurant.get("rating").toString()
                     ));
                 }
 

@@ -1,6 +1,4 @@
 <resources>
     <string name="app_name">Restaurantes UFG</string>
-    <string name="latitude">Latitude:</string>
-    <string name="longitude">Longitude:</string>
     <string name="restaurant_image">Imagem do restaurante</string>
 </resources>

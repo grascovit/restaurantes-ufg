@@ -2,7 +2,6 @@ package br.ufg.inf.restaurantesufg.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -29,7 +28,8 @@ public class MapActivity extends AppCompatActivity {
             @Override
             public void onMapReady(GoogleMap googleMap) {
                 LatLng restaurantCoordinates = new LatLng(Double.parseDouble(restaurantLatitude), Double.parseDouble(restaurantLongitude));
-                googleMap.addMarker(new MarkerOptions().position(restaurantCoordinates).title(restaurantName));
+                MarkerOptions markerOptions = new MarkerOptions().position(restaurantCoordinates).title(restaurantName);
+                googleMap.addMarker(markerOptions).showInfoWindow();
                 googleMap.moveCamera(CameraUpdateFactory.newLatLng(restaurantCoordinates));
                 googleMap.animateCamera(CameraUpdateFactory.zoomTo(17.0f));
             }
